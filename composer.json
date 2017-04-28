@@ -1,0 +1,38 @@
+{
+    "name": "shubinmi/bamboohr-api",
+    "description": "Client for BambooHR Api. Easy way to get your Employees data.",
+    "keywords": [
+        "client",
+        "bamboohr",
+        "bamboo",
+        "hr",
+        "bamboohr api",
+        "bamboo hr",
+        "bamboo hr api",
+        "api"
+    ],
+    "homepage": "https://github.com/shubinmi/bamboohr-api",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Maxim Shubin",
+            "email": "shubinmi@gmail.com",
+            "homepage": "https://github.com/shubinmi",
+            "role": "Founder and cyclist"
+        }
+    ],
+    "support": {
+        "wiki": "https://github.com/shubinmi/bamboohr-api",
+        "source": "https://github.com/shubinmi/bamboohr-api"
+    },
+    "require": {
+        "php": ">=5.4",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "BambooHRApi\\": "src/"
+        }
+    }
+}
