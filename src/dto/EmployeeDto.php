@@ -2,7 +2,7 @@
 
 namespace BambooHRApi\dto;
 
-use BambooHRApi\common\ConstructFromArrayOrJson;
+use BaseHelpers\hydrators\ConstructFromArrayOrJson;
 
 class EmployeeDto extends ConstructFromArrayOrJson
 {
