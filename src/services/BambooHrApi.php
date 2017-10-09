@@ -2,9 +2,13 @@
 
 namespace BambooHRApi\services;
 
+use BambooHRApi\api\BenefitsApi;
 use BambooHRApi\api\EmployeesApi;
 use BambooHRApi\BambooHrClient;
 use BambooHRApi\conf\BambooHrConf;
+use BambooHRApi\dto\BenefitGroupDto;
+use BambooHRApi\dto\BenefitGroupPlanDto;
+use BambooHRApi\dto\EmployeeBenefitDeductionDto;
 use BambooHRApi\dto\EmployeeDto;
 
 class BambooHrApi
@@ -50,5 +54,31 @@ class BambooHrApi
         }
 
         return $result;
+    }
+
+    /**
+     * @return BenefitGroupDto[]
+     */
+    public function getBenefitGroups()
+    {
+        return BenefitsApi::getBenefitGroups($this->api);
+    }
+
+    /**
+     * @return BenefitGroupPlanDto[]
+     */
+    public function getBenefitGroupPlans()
+    {
+        return BenefitsApi::getBenefitGroupPlans($this->api);
+    }
+
+    /**
+     * @param $groupPlanId
+     *
+     * @return EmployeeBenefitDeductionDto[]
+     */
+    public function getEmployeesDeductions($groupPlanId)
+    {
+        return BenefitsApi::getBenefitEmployeeDeductions($this->api, $groupPlanId);
     }
 }
