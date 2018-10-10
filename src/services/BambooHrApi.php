@@ -18,11 +18,12 @@ class BambooHrApi
      */
     private $api;
 
-    public function __construct($subdomain, $apiKey)
+    public function __construct($subdomain, $apiKey, $guzzleConfig = [])
     {
         $conf = new BambooHrConf();
         $conf->setApiKey($apiKey)
-            ->setSubdomain($subdomain);
+            ->setSubdomain($subdomain)
+            ->setGuzzleConfig($guzzleConfig);
         $this->api = new BambooHrClient($conf);
     }
 
@@ -46,7 +47,8 @@ class BambooHrApi
         $result = [];
         foreach ($employees as $employee) {
             $properties = array_keys(get_object_vars($employee));
-            if (empty(array_diff($fields, $properties))) {
+            $diff = array_diff($fields, $properties);
+            if (empty($diff)) {
                 $result[] = $employee;
                 continue;
             }
