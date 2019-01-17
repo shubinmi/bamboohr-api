@@ -29,6 +29,7 @@ class BambooHrApi
 
     /**
      * @return EmployeeDto[]
+     * @throws \Exception
      */
     public function getAllEmployees()
     {
@@ -40,18 +41,13 @@ class BambooHrApi
      * @param array         $fields
      *
      * @return EmployeeDto[]
+     * @throws \Exception
      */
     public function getMoreInfoForEmployees(
         array $employees, $fields = ['firstName', 'lastName', 'workEmail', 'photoUrl']
     ) {
         $result = [];
         foreach ($employees as $employee) {
-            $properties = array_keys(get_object_vars($employee));
-            $diff = array_diff($fields, $properties);
-            if (empty($diff)) {
-                $result[] = $employee;
-                continue;
-            }
             $result[] = EmployeesApi::getEmployee($this->api, $employee->id, $fields);
         }
 

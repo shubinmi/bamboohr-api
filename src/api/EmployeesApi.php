@@ -13,6 +13,7 @@ class EmployeesApi
      * @param BambooHrClient $client
      *
      * @return EmployeeDto[]
+     * @throws \Exception
      */
     public static function getDirectoryEmployees(BambooHrClient $client)
     {
@@ -41,6 +42,7 @@ class EmployeesApi
      * @param array          $fields
      *
      * @return EmployeeDto
+     * @throws \Exception
      */
     public static function getEmployee(
         BambooHrClient $client,
@@ -49,7 +51,7 @@ class EmployeesApi
     ) {
         $request  = new Request(
             'GET',
-            $client->getEndpoint() . 'employees/' . $employeeId . '?' . implode(',', $fields),
+            $client->getEndpoint() . 'employees/' . $employeeId . '?fields=' . implode(',', $fields),
             ['Accept' => 'application/json']
         );
         $response = ApiHelper::getResponse($request, $client);
