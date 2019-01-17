@@ -64,5 +64,10 @@ class EmployeeDto extends ConstructFromArrayOrJson
     /**
      * @var string
      */
+    public $department;
+
+    /**
+     * @var string
+     */
     public $originalHireDate;
 }
